@@ -10,6 +10,7 @@ export function AuthContextProvider({ children }) {
         team2img:""
     });
     const [team, setteam] = React.useState([]);
+    const [Auth, isAuth] = React.useState(false);
     const [contest, setcontest] = React.useState([]);
     function setTeamfn(team) {
         setteam(team);
@@ -41,6 +42,8 @@ export function AuthContextProvider({ children }) {
         forsetcontest,
         setcontest,
         contest,
+        isAuth,
+        Auth
       }}
     >
       {children}

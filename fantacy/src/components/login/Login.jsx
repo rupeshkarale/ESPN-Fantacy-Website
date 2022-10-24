@@ -1,11 +1,18 @@
 import React from "react";
 import { Box, Text, Input, Heading, Button } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import Alertstyle from "../Alert-component/Alert";
 const Login = () => {
+  const { isAuth } = React.useContext(AuthContext);
   const navigate = useNavigate();
   const [pass, setpass] = React.useState("");
   const [email, setemail] = React.useState("");
-    const [data, setdata] = React.useState({ email: "", pass: "", name: "" });
+  const [data, setdata] = React.useState({ email: "", pass: "", name: "" });
+  const [display, setdiplay] = React.useState(true);
+  const [title, settitle] = React.useState('');
+  const [status, setStatus] = React.useState('');
+  const [message, setmessage] = React.useState('');
     
     React.useEffect(() => {
      fetch("https://rupesh-team.herokuapp.com/login")
@@ -17,14 +24,36 @@ const Login = () => {
     
 
     if (email == data.email && pass == data.pass) {
-        alert("Login Successfull");
-        navigate("/matches")
+      isAuth(() => true);
+        // alert("Login Successfull");
+      settitle(() => "Success")
+      setmessage(() => "Login successfull")
+      setStatus(() => "success");
+        // navigate("/matches")
     } else {
+      isAuth(() => true);
+      // alert("Login Successfull");
+      settitle(() => "Error");
+      setmessage(() => "You Enter Wrong Password");
+      setStatus(() => "error");
         alert("Enter Wrong Password or Email")
     }
+    
+  }
+  function onclosefn() {
+    setdiplay(() => false)
   }
   return (
-    <Box  mt='36' w="40%">
+    <Box mt="36" w="40%">
+      {display ? (
+        <Alertstyle
+          title={title}
+          onClose={onclosefn}
+          status={status}
+          message={message}
+        />
+      ) : null}
+
       <Box gap="5" display="flex" alignItems="center" flexDirection="column">
         <Heading>LOGIN</Heading>
         <Text mt="-2" mb="5">
@@ -52,7 +81,7 @@ const Login = () => {
           Login
         </Button>
         <Text mb="-12px">Don't Have Account SignUp</Text>
-        <Link to="/login">
+        <Link to="/">
           <Button variant="link" color="red">
             SignUp
           </Button>

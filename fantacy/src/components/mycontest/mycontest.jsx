@@ -1,7 +1,15 @@
 import { Box, Heading, Text, Button,Flex,Image, Avatar } from "@chakra-ui/react";
 import React from "react";
 import { AuthContext } from "../../context/AuthContext";
+
+import { useNavigate } from "react-router-dom";
 const Mycontest = () => {
+  const navigate = useNavigate();
+  const { Auth } = React.useContext(AuthContext);
+  if (Auth === false) {
+    navigate("/");
+    alert("Please Login First");
+  }
   const { contest } = React.useContext(AuthContext);
   console.log(contest);
 

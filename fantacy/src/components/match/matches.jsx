@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Box, Text, Image, Avatar,Button } from "@chakra-ui/react";
-
+import { Box, Text, Image, Avatar, Button } from "@chakra-ui/react";
+import Skeletonloading from "../Skeleton-loading/Skeleton";
+import { AuthContext } from "../../context/AuthContext";
+  import { useNavigate } from "react-router-dom";
 
 import Match from "./match";
 const Matches = () => {
+  const navigate = useNavigate();
+  const { Auth } = React.useContext(AuthContext)
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (Auth === false) {
+      navigate("/");
+      alert("Please Login First");
+    }
     getMatch();
   }, []);
 
   const getMatch = () => {
+    
     fetch("https://rupesh-team.herokuapp.com/match")
       .then((res) => res.json())
       .then((res) => setData(res))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   };
 
   return (
-    <Box  mt='4%' width="40%" p="1">
-      {data.map((match) => (
+    <Box mt="4%" width="40%" p="1">
+      {loading ? (
+        <Skeletonloading />
+      ) : (
+        data.map((match) => <Match key={match.id} {...match} />)
+      )}
+      {/* {data.map((match) => (
         <Match key={match.id} {...match} />
-      ))}
-     
+      ))} */}
     </Box>
   );
 };
