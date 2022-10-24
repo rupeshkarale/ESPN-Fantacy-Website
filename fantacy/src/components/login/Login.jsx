@@ -31,12 +31,12 @@ const Login = () => {
       setStatus(() => "success");
         // navigate("/matches")
     } else {
-      isAuth(() => true);
+      
       // alert("Login Successfull");
       settitle(() => "Error");
       setmessage(() => "You Enter Wrong Password");
       setStatus(() => "error");
-        alert("Enter Wrong Password or Email")
+        // alert("Enter Wrong Password or Email")
     }
     
   }
