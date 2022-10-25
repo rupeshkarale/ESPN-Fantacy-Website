@@ -8,7 +8,12 @@ import { AuthContext } from '../../context/AuthContext';
 const Navbar = () => {
   const { Auth ,isAuth} = React.useContext(AuthContext);
   const handlelogout = () => {
-    alert("You are Logout")
+    // alert("You are Logout")
+     Swal.fire({
+       icon: "info",
+       title: "Logout Successfull",
+       text: "Thank you",
+     });
     isAuth(() => false);
   }
     return (

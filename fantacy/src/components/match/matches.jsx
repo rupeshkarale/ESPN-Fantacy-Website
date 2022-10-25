@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
   import { useNavigate } from "react-router-dom";
 
 import Match from "./match";
+import Swal from 'sweetalert2';
 const Matches = () => {
   const navigate = useNavigate();
   const { Auth } = React.useContext(AuthContext)
@@ -14,7 +15,12 @@ const Matches = () => {
   useEffect(() => {
     if (Auth === false) {
       navigate("/");
-      alert("Please Login First");
+    
+       Swal.fire({
+         icon: "info",
+         title: "Heyy",
+         text: "Please Login First!",
+       });
     }
     getMatch();
   }, []);

@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Text, Input, Heading, Button } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
+import Swal  from 'sweetalert2';
 const init =  {
   name: "",
     email: "",
@@ -29,7 +30,12 @@ const Signup = () => {
       },
       body: newform
     });
-    alert("SignUp Sucsessfull")
+    
+     Swal.fire({
+       icon: "suceess",
+       title: "Signup Suceessfull",
+       
+     });
     navigate("/login")
 
     
