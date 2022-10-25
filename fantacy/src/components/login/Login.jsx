@@ -9,39 +9,40 @@ const Login = () => {
   const [pass, setpass] = React.useState("");
   const [email, setemail] = React.useState("");
   const [data, setdata] = React.useState({ email: "", pass: "", name: "" });
-  const [display, setdiplay] = React.useState(true);
-  const [title, settitle] = React.useState('');
-  const [status, setStatus] = React.useState('');
-  const [message, setmessage] = React.useState('');
-    
-    React.useEffect(() => {
-     fetch("https://rupesh-team.herokuapp.com/login")
-       .then((res) => res.json())
-       .then((res) => setdata(res))
-       .catch((err) => alert(err));   
-    },[])
-  function loginfn() {
-    
+  const [display, setdiplay] = React.useState();
+  const [title, settitle] = React.useState("");
+  const [status, setStatus] = React.useState("");
+  const [message, setmessage] = React.useState("");
 
+  React.useEffect(() => {
+    fetch("https://rupesh-team.herokuapp.com/login")
+      .then((res) => res.json())
+      .then((res) => setdata(res))
+      .catch((err) => alert(err));
+  }, []);
+  function loginfn() {
     if (email == data.email && pass == data.pass) {
       isAuth(() => true);
-        // alert("Login Successfull");
-      settitle(() => "Success")
-      setmessage(() => "Login successfull")
-      setStatus(() => "success");
-        // navigate("/matches")
-    } else {
-      
       // alert("Login Successfull");
+      setdiplay(() => true)
+      settitle(() => "Success");
+      setmessage(() => "Login successfull");
+      setStatus(() => "success");
+      setTimeout(() => {
+        navigate("/matches");
+      }, 500);
+      
+    } else {
+      // alert("Login Successfull");
+       setdiplay(() => true);
       settitle(() => "Error");
       setmessage(() => "You Enter Wrong Password");
       setStatus(() => "error");
-        // alert("Enter Wrong Password or Email")
+      // alert("Enter Wrong Password or Email")
     }
-    
   }
   function onclosefn() {
-    setdiplay(() => false)
+    setdiplay(() => false);
   }
   return (
     <Box mt="36" w="40%">

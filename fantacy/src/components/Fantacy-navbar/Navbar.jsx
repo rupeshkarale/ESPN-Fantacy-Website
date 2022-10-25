@@ -3,6 +3,7 @@ import React from 'react'
 import { Box,Avatar,Image } from '@chakra-ui/react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
 import { AuthContext } from '../../context/AuthContext';
 const Navbar = () => {
   const { Auth ,isAuth} = React.useContext(AuthContext);

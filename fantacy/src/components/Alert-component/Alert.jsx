@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 const Alertstyle = ({ status, message, title, onClose }) => {
   return (
-    <Alert display="flex" m="auto" status={"info"}>
+    <Alert display="flex" alignItems={'center'} status={"info"}>
       <AlertIcon />
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
