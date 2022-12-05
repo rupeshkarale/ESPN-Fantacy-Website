@@ -23,12 +23,12 @@ const Signup = () => {
 
   const signupfn = () => {
     let newform = JSON.stringify(form);
-    fetch("https://rupesh-team.herokuapp.com/login", {
+    fetch("https://espn-fantasy.onrender.com/login", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: newform
+      body: newform,
     });
     
      Swal.fire({

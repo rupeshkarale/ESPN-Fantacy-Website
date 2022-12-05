@@ -15,7 +15,7 @@ const Login = () => {
   const [message, setmessage] = React.useState("");
 
   React.useEffect(() => {
-    fetch("https://rupesh-team.herokuapp.com/login")
+    fetch("https://espn-fantasy.onrender.com/login")
       .then((res) => res.json())
       .then((res) => setdata(res))
       .catch((err) => alert(err));

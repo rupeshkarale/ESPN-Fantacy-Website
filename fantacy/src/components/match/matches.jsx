@@ -27,7 +27,7 @@ const Matches = () => {
 
   const getMatch = () => {
     
-    fetch("https://rupesh-team.herokuapp.com/match")
+    fetch("https://espn-fantasy.onrender.com/match")
       .then((res) => res.json())
       .then((res) => setData(res))
       .catch((err) => console.log(err))
