@@ -37,50 +37,47 @@ const Playerlist = ({ team1, team2 }) => {
       .catch((err) => console.log(err));
   }, [page]);
 
-//   const addplayer = (id, name, country, flag) => {
-    
+  //   const addplayer = (id, name, country, flag) => {
 
-//       if (flag == false) {
-//         let obj = {
-//           id: id,
-//           name: name,
-//           country: country,
-//         };
-//       fetch("https://rupesh-team.herokuapp.com/player", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(obj),
-//       });
-//     } else {
-//       fetch(`https://rupesh-team.herokuapp.com/player/${id}`, {
-//         method: "DELETE",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       });
-//     }
-//   };
-    
-    
-    const addplayer = (id, name, country, flag) => {
-        if (flag == false) {
-            let obj = {
-                id: id,
-                name: name,
-                country: country,
-            };
-            setplayerlist((data) => {
-                return [...data,obj]
-            })
-        }
-        else {
-            let newdata = playerlist.filter((item) => item.id != id)
-            setplayerlist(newdata)
-        }
+  //       if (flag == false) {
+  //         let obj = {
+  //           id: id,
+  //           name: name,
+  //           country: country,
+  //         };
+  //       fetch("https://rupesh-team.herokuapp.com/player", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(obj),
+  //       });
+  //     } else {
+  //       fetch(`https://rupesh-team.herokuapp.com/player/${id}`, {
+  //         method: "DELETE",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+  //     }
+  //   };
+
+  const addplayer = (id, name, country, flag) => {
+    if (flag == false) {
+      let obj = {
+        id: id,
+        name: name,
+        country: country,
+      };
+      setplayerlist((data) => {
+        return [...data, obj];
+      });
+    } else {
+      let newdata = playerlist.filter((item) => item.id != id);
+      setplayerlist(newdata);
     }
-    
+  };
+
   const filterfn = () => {
     if (isfilter == true) {
       const data1 = player.sort((a, b) => {
@@ -113,24 +110,22 @@ const Playerlist = ({ team1, team2 }) => {
   };
 
   const sendtoconetxt = () => {
-    
-        setTeamfn(playerlist)
-      fetch("https://rupesh-team.herokuapp.com/player", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(playerlist),
-      });
-    
-    };
-    
+    setTeamfn(playerlist);
+    fetch("https://espn-fantasy.onrender.com/player", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(playerlist),
+    });
+  };
+
   const onClose = () => {
     setdisplay("none");
   };
 
   return (
-    <Box h='100vh' display="flex" flexDirection="column" gap="5">
+    <Box h="100vh" display="flex" flexDirection="column" gap="5">
       <Tabs
         p=" 10px 0px"
         display="flex"
@@ -194,8 +189,14 @@ const Playerlist = ({ team1, team2 }) => {
           />
         </Box>
       </Alert>
-          <Link to="/home" >
-        <Button display='block' m="auto" colorScheme="purple" size="lg" onClick={sendtoconetxt}>
+      <Link to="/home">
+        <Button
+          display="block"
+          m="auto"
+          colorScheme="purple"
+          size="lg"
+          onClick={sendtoconetxt}
+        >
           Save & Continue
         </Button>
       </Link>

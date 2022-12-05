@@ -2,31 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Box, Text, Image, Avatar, Button } from "@chakra-ui/react";
 import Skeletonloading from "../Skeleton-loading/Skeleton";
 import { AuthContext } from "../../context/AuthContext";
-  import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Match from "./match";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 const Matches = () => {
   const navigate = useNavigate();
-  const { Auth } = React.useContext(AuthContext)
+  const { Auth } = React.useContext(AuthContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (Auth === false) {
       navigate("/");
-    
-       Swal.fire({
-         icon: "info",
-         title: "Heyy",
-         text: "Please Login First!",
-       });
+
+      Swal.fire({
+        icon: "info",
+        title: "Heyy",
+        text: "Please Login First!",
+      });
     }
     getMatch();
   }, []);
 
   const getMatch = () => {
-    
     fetch("https://espn-fantasy.onrender.com/match")
       .then((res) => res.json())
       .then((res) => setData(res))
