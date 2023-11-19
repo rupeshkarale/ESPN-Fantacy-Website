@@ -24,17 +24,16 @@ const Login = () => {
     if (email == data.email && pass == data.pass) {
       isAuth(() => true);
       // alert("Login Successfull");
-      setdiplay(() => true)
+      setdiplay(() => true);
       settitle(() => "Success");
       setmessage(() => "Login successfull");
       setStatus(() => "success");
       setTimeout(() => {
         navigate("/matches");
       }, 500);
-      
     } else {
       // alert("Login Successfull");
-       setdiplay(() => true);
+      setdiplay(() => true);
       settitle(() => "Error");
       setmessage(() => "You Enter Wrong Password");
       setStatus(() => "error");

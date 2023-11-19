@@ -16,19 +16,17 @@ const Mycontest = () => {
   const navigate = useNavigate();
   const { Auth } = React.useContext(AuthContext);
   React.useEffect(() => {
-     if (Auth === false) {
-       navigate("/");
-       
-       Swal.fire({
-         icon: "info",
-         title: "Hey",
-         text: "Please Login First!",
-         
-       });
-     }   
-  }, [])
-  
-  
+    if (Auth === false) {
+      navigate("/");
+
+      Swal.fire({
+        icon: "info",
+        title: "Hey",
+        text: "Please Login First!",
+      });
+    }
+  }, []);
+
   const { contest } = React.useContext(AuthContext);
   console.log(contest);
 
