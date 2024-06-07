@@ -13,12 +13,12 @@ import { BottamBar } from "./components/Fantacy-navbar/BottamBar";
 function App() {
   return (
     <div className="App">
-      <Box width="100%" margin="auto">
-        <Box display="flex" justifyContent="center">
+      <Box display="block" width="100%" margin="auto">
+        <Box display="flex" w={"100%"} justifyContent="center">
           <Box
-            width="40%"
+            width={["100%", "40%"]}
             minHeight="100vh"
-            border="3px solid #5217b0 "
+            border="3px solid #5217b0"
             display="flex"
             flexDirection="column"
           >

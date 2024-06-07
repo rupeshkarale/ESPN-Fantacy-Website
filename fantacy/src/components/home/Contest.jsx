@@ -17,7 +17,6 @@ const Contest = ({ joincontest }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { contest } = React.useContext(AuthContext);
-  console.log(contest);
 
   return (
     // contest.length==0 ? <h1>no data</h1> :
@@ -30,7 +29,7 @@ const Contest = ({ joincontest }) => {
       w="100%"
     >
       <Box display="flex" justifyContent="space-between">
-        <Heading fontSize="23" color="#ff4333">
+        <Heading fontSize={["18", "23"]} color="#ff4333">
           Winner Takes Glory
         </Heading>
         <Text className="text">Winner 0</Text>
@@ -62,11 +61,11 @@ const Contest = ({ joincontest }) => {
       <>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent>
-            <ModalHeader fontSize="2xl">CONFIRMATION</ModalHeader>
+          <ModalContent w={["80%", "100%"]}>
+            <ModalHeader fontSize={["xl", "2xl"]}>CONFIRMATION</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Box display="flex" flexDirection="column" gap="2">
+              <Box display="flex" flexDirection="column" gap={["0.5", "2"]}>
                 <Box display="flex" justifyContent="space-between">
                   <Text>Entry Fee</Text>
                   <Text>$ 0</Text>
@@ -84,13 +83,7 @@ const Contest = ({ joincontest }) => {
 
             <ModalFooter display="block">
               <Link to="/matches" onClick={joincontest}>
-                <Button
-                  ml="3"
-                  width="100%"
-                  colorScheme="purple"
-                  mr={3}
-                  onClick={onClose}
-                >
+                <Button width="100%" colorScheme="purple" onClick={onClose}>
                   Join Context
                 </Button>
               </Link>

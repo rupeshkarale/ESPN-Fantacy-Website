@@ -15,8 +15,10 @@ const Login = () => {
   const [title, settitle] = React.useState("");
   const [status, setStatus] = React.useState("");
   const [message, setmessage] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   async function loginfn() {
+    setLoading(true);
     try {
       await axios.post(`${API_URL}/login`, {
         username: email,
@@ -37,6 +39,7 @@ const Login = () => {
       setmessage(() => error.response.data.message);
       setStatus(() => "error");
     }
+    setLoading(false);
   }
   function onclosefn() {
     setdiplay(() => false);
@@ -75,7 +78,13 @@ const Login = () => {
           name="pass"
           placeholder="Enter Password.."
         />
-        <Button onClick={loginfn} w="70%" colorScheme="purple" size="lg">
+        <Button
+          isLoading={loading}
+          onClick={loginfn}
+          w="70%"
+          colorScheme="purple"
+          size="lg"
+        >
           Login
         </Button>
         <Text mb="-12px">Don't Have Account SignUp</Text>

@@ -28,7 +28,7 @@ export const BottamBar = () => {
   };
   return (
     <Box h="100%" w="100%" position="relative">
-      <Tabs pos="fixed" w="39.5%" bottom="0" zIndex="modal">
+      <Tabs pos="fixed" w={["100%", "39.5%"]} bottom="0" zIndex="modal">
         <TabList
           display="flex"
           justifyContent="space-between"
@@ -74,7 +74,7 @@ export const BottamBar = () => {
           onClose={onClose}
         >
           <AlertDialogOverlay>
-            <AlertDialogContent>
+            <AlertDialogContent w={"90%"}>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 Logout
               </AlertDialogHeader>

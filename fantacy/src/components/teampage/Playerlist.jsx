@@ -96,12 +96,12 @@ const Playerlist = ({ team1, team2 }) => {
   };
 
   return (
-    <Box h="90vh" display="flex" flexDirection="column" gap="3">
+    <Box h="100vh" display="flex" flexDirection="column" gap="3">
       <Tabs
         p=" 5px 0px"
         display="flex"
         colorScheme="red"
-        gap="20"
+        gap={["2", "20"]}
         justifyContent="space-evenly"
       >
         <Tab className="machname" onClick={() => setpage(1)}>
@@ -165,7 +165,7 @@ const Playerlist = ({ team1, team2 }) => {
           display="block"
           m="auto"
           colorScheme="purple"
-          size="lg"
+          size={["md", "lg"]}
           onClick={sendtoconetxt}
         >
           Save & Continue

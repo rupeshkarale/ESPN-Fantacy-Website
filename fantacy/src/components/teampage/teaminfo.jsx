@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Avatar, Text, background, Input,Switch } from "@chakra-ui/react";
+import { Box, Avatar, Text, background, Input, Switch } from "@chakra-ui/react";
 import "../match/match.css";
 import { useBoolean } from "@chakra-ui/react";
 import styled from "styled-components";
@@ -11,12 +11,11 @@ const Teaminfo = ({
   onclickfn,
   cr,
   sby,
-    pts,
-  page
+  pts,
+  page,
 }) => {
-    const [flag, setflag] = React.useState(false);
-    // const [flag, setFlag] = useBoolean(false);
-
+  const [flag, setflag] = React.useState(false);
+  // const [flag, setFlag] = useBoolean(false);
 
   const Title = styled.div`
     padding: 1rem 1rem;
@@ -25,40 +24,36 @@ const Teaminfo = ({
     //   border-radius: 5%;
   `;
 
-    const bothfn = (name, country, id, flag) => {
-        onclickfn(id, name, country, flag);
-        setflag((flag) => {
-          return !flag;
-        });
-        
-    
+  const bothfn = (name, country, id, flag) => {
+    onclickfn(id, name, country, flag);
+    setflag((flag) => {
+      return !flag;
+    });
   };
-    return (
-      <Title>
-        <Box
-          onClick={() => bothfn(name, country, id, flag)}
-          display="flex"
-          w="100%"
-          gap="20"
-          justifyContent="start"
-          
-            >
-               
-          <Box display="flex" w="50%">
-            <Avatar src={playerImg}></Avatar>
-            <Box ml="3">
-              <Text className="machname">{name}</Text>
-              <Text>{country}</Text>
-            </Box>
-          </Box>
-          <Box display="flex" w="50%" justifyContent="space-between">
-            <Box>{sby}</Box>
-            <Box>{pts}</Box>
-            <Box>{cr}</Box>
+  return (
+    <Title>
+      <Box
+        onClick={() => bothfn(name, country, id, flag)}
+        display="flex"
+        w="100%"
+        gap="20"
+        justifyContent="start"
+      >
+        <Box display="flex" w="50%">
+          <Avatar src={playerImg}></Avatar>
+          <Box ml="3">
+            <Text className="machname">{name}</Text>
+            <Text>{country}</Text>
           </Box>
         </Box>
-      </Title>
-    );
+        <Box display="flex" w="50%" justifyContent="space-between">
+          <Box>{sby}</Box>
+          <Box>{pts}</Box>
+          <Box>{cr}</Box>
+        </Box>
+      </Box>
+    </Title>
+  );
 };
 
 export default Teaminfo;

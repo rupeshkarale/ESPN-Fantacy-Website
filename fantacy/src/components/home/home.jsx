@@ -40,7 +40,7 @@ const Home = () => {
           <Button
             m="auto"
             // display="block"
-            w="96"
+            w={["40", "96"]}
             size="lg"
             colorScheme="purple"
           >

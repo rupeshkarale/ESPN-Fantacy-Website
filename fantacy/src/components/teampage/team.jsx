@@ -8,7 +8,7 @@ const Team = () => {
   const { team1, team1img, team2, team2img } = teamname;
 
   return (
-    <Box width="100%" p="5">
+    <Box width="100%" p={["4", "5"]}>
       <Box></Box>
       <Box
         w="100%"

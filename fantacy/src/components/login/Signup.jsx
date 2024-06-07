@@ -12,6 +12,7 @@ const init = {
 
 const Signup = () => {
   const [form, setform] = React.useState(init);
+  const [loading, setLoding] = React.useState(false);
   const navigate = useNavigate();
 
   const inputfn = (e) => {
@@ -23,6 +24,7 @@ const Signup = () => {
   };
 
   const signupfn = async () => {
+    setLoding(true);
     try {
       const response = await fetch(`${API_URL}/signup`, {
         method: "POST",
@@ -52,6 +54,7 @@ const Signup = () => {
         text: error.message || "Unknown error occurred",
       });
     }
+    setLoding(false);
   };
 
   return (
@@ -88,12 +91,18 @@ const Signup = () => {
           name="pass"
           placeholder="Enter Password.."
         />
-        <Button onClick={signupfn} w="70%" colorScheme="purple" size="lg">
+        <Button
+          isLoading={loading}
+          onClick={signupfn}
+          w="70%"
+          colorScheme="purple"
+          size="lg"
+        >
           Sign Up
         </Button>
         <Text mb="-12px">Already have Account</Text>
         <Link to="/login">
-          <Button variant="link" color="red">
+          <Button isLoading={loading} variant="link" color="red">
             Login Now
           </Button>
         </Link>

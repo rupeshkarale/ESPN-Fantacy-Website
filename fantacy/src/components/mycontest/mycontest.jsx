@@ -1,12 +1,4 @@
-import {
-  Box,
-  Heading,
-  Text,
-  Button,
-  Flex,
-  Image,
-  Avatar,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Flex, Avatar } from "@chakra-ui/react";
 import React from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -28,24 +20,28 @@ const Mycontest = () => {
   }, []);
 
   const { contest } = React.useContext(AuthContext);
-  console.log(contest);
 
   return contest.length == 0 ? (
     <Heading fontSize="2xl" mt="40" ml="12" color="red">
       Contest Not Found..Please Join Contest !!
     </Heading>
   ) : (
-    <Box display="flex" w="100%" flexDirection="column">
+    <Box display="flex" w="100%" p="2" gap={"3"} flexDirection="column">
       {contest.map((ele) => {
         return (
           <Box
             width="100%"
-            height="100vh"
             className="contest-data"
             mt="1"
             display="flex"
             flexDirection="column"
-            gap="5"
+            gap="3"
+            borderBottom={"2px"}
+            shadow="lg"
+            borderWidth="1px"
+            borderRadius="md"
+            borderColor="gray.200"
+            bg="white"
           >
             <Box display="flex" justifyContent="space-between">
               <Heading fontSize="23" color="#ff4333">
