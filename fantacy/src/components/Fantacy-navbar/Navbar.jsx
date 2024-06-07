@@ -19,7 +19,6 @@ const Navbar = () => {
         backgroundColor="#5217b0"
         maxHeight="60px"
         padding="12px 15px"
-        zIndex="1"
         display="flex"
         w="100%"
       >

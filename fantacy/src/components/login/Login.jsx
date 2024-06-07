@@ -45,7 +45,7 @@ const Login = () => {
     setdiplay(() => false);
   }
   return (
-    <Box mt="36" w="100%">
+    <Box mt={["20", "36"]} w="100%">
       {display ? (
         <Alertstyle
           title={title}
