@@ -17,8 +17,8 @@ const Navbar = () => {
     <Box w="100%">
       <Box
         backgroundColor="#5217b0"
-        maxHeight="60px"
-        padding="12px 15px"
+        maxHeight="60"
+        padding="2"
         display="flex"
         w="100%"
       >
