@@ -39,9 +39,10 @@ const Mycontest = () => {
       {contest.map((ele) => {
         return (
           <Box
-            width="38%"
+            width="100%"
+            height="100vh"
             className="contest-data"
-            mt="20"
+            mt="1"
             display="flex"
             flexDirection="column"
             gap="5"

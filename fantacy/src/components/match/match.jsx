@@ -6,9 +6,8 @@ import { AuthContext } from "../../context/AuthContext";
 import "./match.css";
 
 const Match = ({ teamInfo, id, dateTimeGMT }) => {
-//   const { isAuth } = React.useContext(AuthContext);
+  //   const { isAuth } = React.useContext(AuthContext);
   const { teamfn } = React.useContext(AuthContext);
-
 
   const time = dateTimeGMT.substr(11, 18);
 
@@ -19,12 +18,12 @@ const Match = ({ teamInfo, id, dateTimeGMT }) => {
           teamInfo[0].name,
           teamInfo[0].img,
           teamInfo[1].name,
-          teamInfo[1].img
+          teamInfo[1].img,
         )
       }
       to={`/matches/${id}`}
     >
-      <Box  padding="9px 16px 33px">
+      <Box w="100%" padding="9px 16px 33px">
         <Box
           boxShadow="md"
           filter="drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.1))"

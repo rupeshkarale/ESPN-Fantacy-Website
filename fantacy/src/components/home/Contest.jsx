@@ -27,6 +27,7 @@ const Contest = ({ joincontest }) => {
       display="flex"
       flexDirection="column"
       gap="5"
+      w="100%"
     >
       <Box display="flex" justifyContent="space-between">
         <Heading fontSize="23" color="#ff4333">
@@ -59,7 +60,7 @@ const Contest = ({ joincontest }) => {
         </Box>
       </Box>
       <>
-        <Modal  isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader fontSize="2xl">CONFIRMATION</ModalHeader>

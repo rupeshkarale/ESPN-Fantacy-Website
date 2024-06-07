@@ -1,9 +1,9 @@
-import React from 'react'
-import { Image,Heading,Box,Flex } from '@chakra-ui/react'
+import React from "react";
+import { Image, Heading, Box, Flex } from "@chakra-ui/react";
 const Sideimg = () => {
-    return (
-      <h1>
-        <Image
+  return (
+    <h1>
+      {/* <Image
           position="fixed"
           h="100vh"
           right="0px"
@@ -43,9 +43,9 @@ const Sideimg = () => {
               src="https://espn.wonderwins.com/assets/images/ios_icon.png"
             />
           </Flex>
-        </Box>
-      </h1>
-    );
-}
+        </Box> */}
+    </h1>
+  );
+};
 
-export default Sideimg
+export default Sideimg;

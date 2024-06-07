@@ -1,93 +1,41 @@
-
-import React from 'react'
-import { Box,Avatar,Image } from '@chakra-ui/react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Box, Avatar, Image, Text } from "@chakra-ui/react";
 import Swal from "sweetalert2";
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from "../../context/AuthContext";
 const Navbar = () => {
-  const { Auth ,isAuth} = React.useContext(AuthContext);
+  const { Auth, isAuth } = React.useContext(AuthContext);
   const handlelogout = () => {
     // alert("You are Logout")
-     Swal.fire({
-       icon: "info",
-       title: "Logout Successfull",
-       text: "Thank you",
-     });
+    Swal.fire({
+      icon: "info",
+      title: "Logout Successfull",
+      text: "Thank you",
+    });
     isAuth(() => false);
-  }
-    return (
-      <Box>
-        <Box
-          borderRadius="base"
-          backgroundColor="#5217b0"
-          maxHeight="60px"
-          padding="12px 15px"
-          pos="fixed"
-          zIndex="1"
-          top="0px"
-          display="flex"
-          w="40%"
+  };
+  return (
+    <Box w="100%">
+      <Box
+        backgroundColor="#5217b0"
+        maxHeight="60px"
+        padding="12px 15px"
+        zIndex="1"
+        display="flex"
+        w="100%"
+      >
+        <Avatar size="sm" src="https://bit.ly/broken-link" />
+        <Text
+          fontFamily="mono"
+          fontSize="xl"
+          fontWeight="bold"
+          color="white"
+          ml="35%"
         >
-          <Avatar size="sm" src="https://bit.ly/broken-link" />
-          <Image
-            ml="30%"
-            h="5"
-            w="50"
-            src="https://espn.wonderwins.com/assets/images/header_logo.png"
-          ></Image>
-        </Box>
-        <Box>
-          <Tabs
-            p="-1px 16px"
-            pos="fixed"
-            w="40%"
-            // height={"45px"}
-            zIndex="modal"
-            bottom="0%"
-          >
-            <TabList
-              // h="16"
-              // w="100%"
-              display="flex"
-              justifyContent="space-between"
-              alignItems={"center"}
-              bg="ButtonFace"
-            >
-              <Link to="/">
-                <Tab
-                  as="button"
-                  w="32"
-                  colorScheme="purple"
-                  _selected={{ color: "white", bg: "Purple" }}
-                  onClick={Auth ? handlelogout : null}
-                >
-                  {Auth ? "LOGOUT" : "SIGNUP"}
-                </Tab>
-              </Link>
-              <Link to="/matches">
-                <Tab
-                  as="button"
-                  w="32"
-                  _selected={{ color: "white", bg: "Purple" }}
-                >
-                  HOME
-                </Tab>
-              </Link>
-              <Link to="/mycontest">
-                <Tab
-                  as="button"
-                  w="38"
-                  _selected={{ color: "white", bg: "Purple" }}
-                >
-                  MY CONTEST
-                </Tab>
-              </Link>
-            </TabList>
-          </Tabs>
-        </Box>
+          Fantacy App
+        </Text>
       </Box>
-    );
-}
+    </Box>
+  );
+};
 
-export default Navbar
+export default Navbar;

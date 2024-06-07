@@ -3,6 +3,8 @@ import { Box, Text, Input, Heading, Button } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import Alertstyle from "../Alert-component/Alert";
+import { API_URL } from "../../utils/constant";
+import axios from "axios";
 const Login = () => {
   const { isAuth } = React.useContext(AuthContext);
   const navigate = useNavigate();
@@ -14,37 +16,33 @@ const Login = () => {
   const [status, setStatus] = React.useState("");
   const [message, setmessage] = React.useState("");
 
-  React.useEffect(() => {
-    fetch("https://espn-fantasy.onrender.com/login")
-      .then((res) => res.json())
-      .then((res) => setdata(res))
-      .catch((err) => alert(err));
-  }, []);
-  function loginfn() {
-    if (email == data.email && pass == data.pass) {
+  async function loginfn() {
+    try {
+      await axios.post(`${API_URL}/login`, {
+        username: email,
+        password: pass,
+      });
+
       isAuth(() => true);
-      // alert("Login Successfull");
       setdiplay(() => true);
       settitle(() => "Success");
-      setmessage(() => "Login successfull");
+      setmessage(() => "Login successful");
       setStatus(() => "success");
       setTimeout(() => {
         navigate("/matches");
       }, 500);
-    } else {
-      // alert("Login Successfull");
+    } catch (error) {
       setdiplay(() => true);
       settitle(() => "Error");
-      setmessage(() => "You Enter Wrong Password");
+      setmessage(() => error.response.data.message);
       setStatus(() => "error");
-      // alert("Enter Wrong Password or Email")
     }
   }
   function onclosefn() {
     setdiplay(() => false);
   }
   return (
-    <Box mt="36" w="40%">
+    <Box mt="36" w="100%">
       {display ? (
         <Alertstyle
           title={title}

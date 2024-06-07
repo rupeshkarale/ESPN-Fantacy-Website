@@ -1,25 +1,21 @@
 import React from "react";
 import {
   Box,
-  Avatar,
   Text,
-  background,
-  Input,
   Button,
-  IconButton,
   Alert,
   AlertIcon,
-  AlertDescription,
   AlertTitle,
   CloseButton,
 } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, Tab } from "@chakra-ui/react";
 import Teaminfo from "./teaminfo";
 import { Link } from "react-router-dom";
 import "../match/match.css";
 import { AuthContext } from "../../context/AuthContext";
 
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import { API_URL } from "./../../utils/constant";
 
 const Playerlist = ({ team1, team2 }) => {
   const { setTeamfn } = React.useContext(AuthContext);
@@ -31,36 +27,11 @@ const Playerlist = ({ team1, team2 }) => {
   const [display, setdisplay] = React.useState("none");
 
   React.useEffect(() => {
-    fetch(`https://espn-fantasy.onrender.com/items?_page=${page}&_limit=4`)
+    fetch(`${API_URL}/teams?page=${page}&limit=4`)
       .then((res) => res.json())
-      .then((res) => setplayer(res))
+      .then((res) => setplayer(res.data))
       .catch((err) => console.log(err));
   }, [page]);
-
-  //   const addplayer = (id, name, country, flag) => {
-
-  //       if (flag == false) {
-  //         let obj = {
-  //           id: id,
-  //           name: name,
-  //           country: country,
-  //         };
-  //       fetch("https://rupesh-team.herokuapp.com/player", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(obj),
-  //       });
-  //     } else {
-  //       fetch(`https://rupesh-team.herokuapp.com/player/${id}`, {
-  //         method: "DELETE",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-  //     }
-  //   };
 
   const addplayer = (id, name, country, flag) => {
     if (flag == false) {
@@ -88,7 +59,7 @@ const Playerlist = ({ team1, team2 }) => {
           return 1;
         }
       });
-      setplayer((data) => {
+      setplayer(() => {
         return data1;
       });
       setisfilter(false);
@@ -111,7 +82,7 @@ const Playerlist = ({ team1, team2 }) => {
 
   const sendtoconetxt = () => {
     setTeamfn(playerlist);
-    fetch("https://espn-fantasy.onrender.com/player", {
+    fetch(`${API_URL}/teams`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -125,9 +96,9 @@ const Playerlist = ({ team1, team2 }) => {
   };
 
   return (
-    <Box h="100vh" display="flex" flexDirection="column" gap="5">
+    <Box h="90vh" display="flex" flexDirection="column" gap="3">
       <Tabs
-        p=" 10px 0px"
+        p=" 5px 0px"
         display="flex"
         colorScheme="red"
         gap="20"
@@ -150,8 +121,8 @@ const Playerlist = ({ team1, team2 }) => {
         m="0px -10.5px "
         display="flex"
         bg="#F8F8F9"
-        p="14px   5px"
-        mb="4"
+        p="8px   5px"
+        // mb="-2"
         justifyContent="space-between"
       >
         <Text ml="10" fontSize="md" className="machname" w="35%">
@@ -163,7 +134,7 @@ const Playerlist = ({ team1, team2 }) => {
           CR{isfilter == false ? <ChevronDownIcon /> : <ChevronUpIcon />}
         </Text>
       </Box>
-      <Box display="flex" mt="-5" flexDirection="column" gap="5">
+      <Box display="flex" mt="-5" w="100%" flexDirection="column" gap="2">
         {player.map((item) => (
           <Teaminfo
             key={item.id}
