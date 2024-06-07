@@ -29,7 +29,7 @@ const Navbar = () => {
           fontSize="xl"
           fontWeight="bold"
           color="white"
-          ml="35%"
+          ml={["20", "35%"]}
         >
           Fantacy App
         </Text>
