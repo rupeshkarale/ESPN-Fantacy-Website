@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Text, Input, Heading, Button } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -23,6 +23,10 @@ const Signup = () => {
     }));
   };
 
+  useEffect(() => {
+    //i am using free server, to wake up server using this url
+    fetch(`${API_URL}`);
+  }, []);
   const signupfn = async () => {
     setLoding(true);
     try {

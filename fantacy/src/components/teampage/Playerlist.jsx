@@ -157,7 +157,6 @@ const Playerlist = ({ team1, team2 }) => {
         <Box display="flex">
           <AlertIcon />
           <AlertTitle>Select Minimum 11</AlertTitle>
-
           <CloseButton
             alignSelf="flex-start"
             position="relative"

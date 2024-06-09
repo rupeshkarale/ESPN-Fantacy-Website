@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Avatar, Text, background, Input, Switch } from "@chakra-ui/react";
+import { Box, Avatar, Text } from "@chakra-ui/react";
 import "../match/match.css";
 import styled from "styled-components";
 const Teaminfo = ({
@@ -37,6 +37,7 @@ const Teaminfo = ({
         w="100%"
         gap="20"
         justifyContent="start"
+        cursor={"pointer"}
       >
         <Box display="flex" w="50%">
           <Avatar src={playerImg}></Avatar>
