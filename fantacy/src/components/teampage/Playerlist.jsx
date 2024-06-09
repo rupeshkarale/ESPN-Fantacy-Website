@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { Tabs, Tab } from "@chakra-ui/react";
 import Teaminfo from "./teaminfo";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../match/match.css";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -19,7 +19,7 @@ import { API_URL } from "./../../utils/constant";
 
 const Playerlist = ({ team1, team2 }) => {
   const { setTeamfn } = React.useContext(AuthContext);
-
+  const navigate = useNavigate();
   const [player, setplayer] = React.useState([]);
   const [playerlist, setplayerlist] = React.useState([]);
   const [page, setpage] = React.useState(1);
@@ -40,6 +40,7 @@ const Playerlist = ({ team1, team2 }) => {
         name: name,
         country: country,
       };
+      console.log(id);
       setplayerlist((data) => {
         return [...data, obj];
       });
@@ -81,6 +82,11 @@ const Playerlist = ({ team1, team2 }) => {
   };
 
   const sendtoconetxt = () => {
+    if (playerlist.length < 11) {
+      setdisplay("flex");
+    } else {
+      navigate("/home");
+    }
     setTeamfn(playerlist);
     fetch(`${API_URL}/teams`, {
       method: "PUT",
@@ -142,6 +148,7 @@ const Playerlist = ({ team1, team2 }) => {
             team2={team2}
             onclickfn={addplayer}
             page={page}
+            isSelected={playerlist.some((player) => player.id === item.id)}
             {...item}
           />
         ))}
@@ -160,17 +167,15 @@ const Playerlist = ({ team1, team2 }) => {
           />
         </Box>
       </Alert>
-      <Link to="/home">
-        <Button
-          display="block"
-          m="auto"
-          colorScheme="purple"
-          size={["md", "lg"]}
-          onClick={sendtoconetxt}
-        >
-          Save & Continue
-        </Button>
-      </Link>
+      <Button
+        display="block"
+        m="auto"
+        colorScheme="purple"
+        size={["md", "lg"]}
+        onClick={sendtoconetxt}
+      >
+        Save & Continue
+      </Button>
     </Box>
   );
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Avatar, Text, background, Input, Switch } from "@chakra-ui/react";
 import "../match/match.css";
-import { useBoolean } from "@chakra-ui/react";
 import styled from "styled-components";
 const Teaminfo = ({
   id,
@@ -13,9 +12,9 @@ const Teaminfo = ({
   sby,
   pts,
   page,
+  isSelected,
 }) => {
-  const [flag, setflag] = React.useState(false);
-  // const [flag, setFlag] = useBoolean(false);
+  const [flag, setflag] = React.useState(isSelected);
 
   const Title = styled.div`
     padding: 1rem 1rem;
