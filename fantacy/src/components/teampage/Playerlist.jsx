@@ -7,6 +7,9 @@ import {
   AlertIcon,
   AlertTitle,
   CloseButton,
+  TabPanels,
+  TabPanel,
+  TabList,
 } from "@chakra-ui/react";
 import { Tabs, Tab } from "@chakra-ui/react";
 import Teaminfo from "./teaminfo";
@@ -40,7 +43,6 @@ const Playerlist = ({ team1, team2 }) => {
         name: name,
         country: country,
       };
-      console.log(id);
       setplayerlist((data) => {
         return [...data, obj];
       });
@@ -104,43 +106,49 @@ const Playerlist = ({ team1, team2 }) => {
   return (
     <Box h="100vh" display="flex" flexDirection="column" gap="3">
       <Tabs
-        p=" 5px 0px"
-        display="flex"
-        colorScheme="red"
-        gap={["2", "20"]}
-        justifyContent="space-evenly"
+        mt={"2"}
+        p="6px 0px"
+        colorScheme="blue"
+        borderRadius="md" // Add rounded corners
+        variant="enclosed-colored"
+        bgColor="InactiveCaption"
       >
-        <Tab className="machname" onClick={() => setpage(1)}>
-          Wk
-        </Tab>
-        <Tab className="machname" onClick={() => setpage(2)}>
-          BAT
-        </Tab>
-        <Tab className="machname" onClick={() => setpage(3)}>
-          AR
-        </Tab>
-        <Tab className="machname" onClick={() => setpage(4)}>
-          BOW
-        </Tab>
+        <TabList display="flex" justifyContent="space-evenly">
+          <Tab className="machname" onClick={() => setpage(1)}>
+            Wk
+          </Tab>
+          <Tab className="machname" onClick={() => setpage(2)}>
+            BAT
+          </Tab>
+          <Tab className="machname" onClick={() => setpage(3)}>
+            AR
+          </Tab>
+          <Tab className="machname" onClick={() => setpage(4)}>
+            BOW
+          </Tab>
+        </TabList>
       </Tabs>
-      <Box
-        m="0px -10.5px "
-        display="flex"
-        bg="#F8F8F9"
-        p="8px   5px"
-        // mb="-2"
-        justifyContent="space-between"
-      >
-        <Text ml="10" fontSize="md" className="machname" w="35%">
+      <Box display="flex" justifyContent="space-between">
+        <Text textAlign={"center"} flex="3" fontSize="md" className="machname">
           Players Name
         </Text>
-        <Text className="machname">PTS</Text>
-        <Text className="machname">S.by%</Text>
-        <Text mr="2" className="machname" cursor="pointer" onClick={filterfn}>
+        <Text textAlign={"center"} className="machname" flex="1">
+          PTS
+        </Text>
+        <Text textAlign={"center"} className="machname" flex={"1"}>
+          S.by%
+        </Text>
+        <Text
+          flex={"1"}
+          className="machname"
+          cursor="pointer"
+          onClick={filterfn}
+          textAlign={"center"}
+        >
           CR{isfilter == false ? <ChevronDownIcon /> : <ChevronUpIcon />}
         </Text>
       </Box>
-      <Box display="flex" mt="-5" w="100%" flexDirection="column" gap="2">
+      <Box display="flex" w="100%" flexDirection="column" gap="2" p={"2"}>
         {player.map((item) => (
           <Teaminfo
             key={item.id}
@@ -153,7 +161,7 @@ const Playerlist = ({ team1, team2 }) => {
           />
         ))}
       </Box>
-      <Alert display={display} status="error">
+      <Alert variant={"left-accent"} display={display} status="error">
         <Box display="flex">
           <AlertIcon />
           <AlertTitle>Select Minimum 11</AlertTitle>
@@ -168,7 +176,7 @@ const Playerlist = ({ team1, team2 }) => {
       </Alert>
       <Button
         display="block"
-        m="auto"
+        mx="auto"
         colorScheme="purple"
         size={["md", "lg"]}
         onClick={sendtoconetxt}

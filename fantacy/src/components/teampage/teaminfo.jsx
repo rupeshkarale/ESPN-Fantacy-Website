@@ -16,11 +16,11 @@ const Teaminfo = ({
 }) => {
   const [flag, setflag] = React.useState(isSelected);
 
-  const Title = styled.div`
+  const PlayerContainer = styled.div`
     padding: 1rem 1rem;
-    //   border: ${flag ? "none" : "1px solid #F7ECDE"};
     background-color: ${flag ? "#F7ECDE" : "#F8F8F9"};
-    //   border-radius: 5%;
+    border: ${flag ? "2px solid #E0E0E0" : "1px solid #E0E0E0"};
+    border-radius: 5px;
   `;
 
   const bothfn = (name, country, id, flag) => {
@@ -30,19 +30,21 @@ const Teaminfo = ({
     });
   };
   return (
-    <Title>
+    <PlayerContainer>
       <Box
         onClick={() => bothfn(name, country, id, flag)}
         display="flex"
         w="100%"
-        gap="20"
+        gap={["2", "6"]}
         justifyContent="start"
         cursor={"pointer"}
       >
         <Box display="flex" w="50%">
           <Avatar src={playerImg}></Avatar>
           <Box ml="3">
-            <Text className="machname">{name}</Text>
+            <Text fontSize={"sm"} fontWeight={"medium"}>
+              {name}
+            </Text>
             <Text>{country}</Text>
           </Box>
         </Box>
@@ -52,7 +54,7 @@ const Teaminfo = ({
           <Box>{cr}</Box>
         </Box>
       </Box>
-    </Title>
+    </PlayerContainer>
   );
 };
 
